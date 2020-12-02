@@ -1,0 +1,1 @@
+mci="./mvnw clean install"
