@@ -51,12 +51,12 @@ public class KioskInventory {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Inventory{");
-        sb.append("id=").append(id);
-        sb.append(", denomination=").append(denomination);
-        sb.append(", billCount=").append(billCount);
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder stringBuilder = new StringBuilder("Inventory{");
+        stringBuilder.append("id=").append(id);
+        stringBuilder.append(", denomination=").append(denomination);
+        stringBuilder.append(", billCount=").append(billCount);
+        stringBuilder.append('}');
+        return stringBuilder.toString();
     }
 }
 
