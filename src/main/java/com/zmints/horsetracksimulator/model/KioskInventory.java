@@ -6,9 +6,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "KioskInventory")
 public class KioskInventory {
-
-    public KioskInventory() {
-    }
+    public KioskInventory(){}
 
     public KioskInventory(int denomination, int billCount) {
         this.denomination = denomination;
@@ -25,20 +23,8 @@ public class KioskInventory {
     @Column
     private int billCount;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getDenomination() {
         return denomination;
-    }
-
-    public void setDenomination(int denomination) {
-        this.denomination = denomination;
     }
 
     public int getBillCount() {
@@ -59,8 +45,3 @@ public class KioskInventory {
         return stringBuilder.toString();
     }
 }
-
-
-
-
-

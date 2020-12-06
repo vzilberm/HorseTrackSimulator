@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RaceHorseService {
     private static final String RACE_HORSE_STRING = "Horses:";
+
     @Autowired
     RaceHorseRepository raceHorseRepository;
 
@@ -61,9 +62,12 @@ public class RaceHorseService {
         return raceHorseRepository.findByHorseNumberEquals(horseNumber).getStatus() == HorseStatus.WON;
     }
 
-    public int getOdds(int horseNumber) {
+    int getOdds(int horseNumber) {
         Horse horse = raceHorseRepository.findByHorseNumberEquals(horseNumber);
 
         return horse.getOdds();
     }
 }
+
+
+

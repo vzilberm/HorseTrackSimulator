@@ -32,36 +32,16 @@ public class Horse {
     @Column
     private HorseStatus status = HorseStatus.LOST;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getHorseNumber() {
         return horseNumber;
-    }
-
-    public void setHorseNumber(int horseNumber) {
-        this.horseNumber = horseNumber;
     }
 
     public String getHorseName() {
         return horseName;
     }
 
-    public void setHorseName(String horseName) {
-        this.horseName = horseName;
-    }
-
     public int getOdds() {
         return odds;
-    }
-
-    public void setOdds(int odds) {
-        this.odds = odds;
     }
 
     public HorseStatus getStatus() {

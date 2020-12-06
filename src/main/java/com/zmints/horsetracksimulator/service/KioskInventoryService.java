@@ -11,21 +11,20 @@ import java.util.List;
 public class KioskInventoryService {
     private static final String INVENTORY_STRING = "Inventory:";
     private static final int RESTOCK_AMOUNT = 10;
+
     @Autowired
     KioskInventoryRepository kioskInventoryRepository;
 
     public KioskInventoryService(){
     }
 
-   public void loadInventory(){
-       kioskInventoryRepository.save(new KioskInventory(1,10));
-       kioskInventoryRepository.save(new KioskInventory(5,10));
-       kioskInventoryRepository.save(new KioskInventory(10,10));
-       kioskInventoryRepository.save(new KioskInventory(20,10));
-       kioskInventoryRepository.save(new KioskInventory(100,10));
-   }
-
-
+    public void loadInventory(){
+        kioskInventoryRepository.save(new KioskInventory(1,10));
+        kioskInventoryRepository.save(new KioskInventory(5,10));
+        kioskInventoryRepository.save(new KioskInventory(10,10));
+        kioskInventoryRepository.save(new KioskInventory(20,10));
+        kioskInventoryRepository.save(new KioskInventory(100,10));
+    }
 
     public void printInventory() {
 
@@ -46,15 +45,15 @@ public class KioskInventoryService {
 
     }
 
-    public List<KioskInventory> getKioskInventory(){
+    List<KioskInventory> getKioskInventory(){
         return kioskInventoryRepository.findAll();
     }
 
-    public KioskInventory  getInventoryByDenomination(int denomination) {
+    KioskInventory  getInventoryByDenomination(int denomination) {
         return kioskInventoryRepository.findByDenominationEquals(denomination);
     }
 
-    public void decreaseInventory(int denomination, int amount) {
+    void decreaseInventory(int denomination, int amount) {
 
         KioskInventory inventory = kioskInventoryRepository.findByDenominationEquals(denomination);
 
@@ -65,7 +64,7 @@ public class KioskInventoryService {
         }
     }
 
-    public boolean isEnoughFunds(int amountWon) {
+    boolean isEnoughFunds(int amountWon) {
 
         List<KioskInventory> inventories = kioskInventoryRepository.findAll();
         Integer funds = inventories.stream().reduce(0,
@@ -74,3 +73,6 @@ public class KioskInventoryService {
     }
 
 }
+
+
+
