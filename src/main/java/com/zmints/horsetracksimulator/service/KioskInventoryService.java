@@ -15,7 +15,6 @@ public class KioskInventoryService {
     KioskInventoryRepository kioskInventoryRepository;
 
     public KioskInventoryService(){
-
     }
 
    public void loadInventory(){

@@ -12,13 +12,14 @@ import java.util.stream.Collectors;
 
 @Component
 public class BetService {
+    @Autowired
+    KioskInventoryService kioskInventoryService;
 
     @Autowired
-    private KioskInventoryService kioskInventoryService;
+    RaceHorseService raceHorseService;
 
-    @Autowired
-    private RaceHorseService    raceHorseService;
-
+    public BetService(){
+    }
 
     public void process(int betAmount, int horseNumber) {
         String winnerName = raceHorseService.getHorse(horseNumber).getHorseName();
