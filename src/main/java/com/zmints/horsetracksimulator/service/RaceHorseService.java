@@ -36,5 +36,20 @@ public class RaceHorseService {
                     +","+horse.getOdds()
                     +","+horse.getStatus().toString().toLowerCase());
         });
+
+    }
+
+    public boolean isValid(int horseNumber){
+        return raceHorseRepository.findByHorseNumberEquals(horseNumber) != null;
+    }
+
+    public void setWinner(int horseNumber){
+        Horse currentWinner = raceHorseRepository.findByStatusEquals(HorseStatus.WON);
+        currentWinner.setStatus(HorseStatus.LOST);
+        raceHorseRepository.save(currentWinner);
+
+        Horse newWinner = raceHorseRepository.findByHorseNumberEquals(horseNumber);
+        newWinner.setStatus(HorseStatus.WON);
+        raceHorseRepository.save(newWinner);
     }
 }

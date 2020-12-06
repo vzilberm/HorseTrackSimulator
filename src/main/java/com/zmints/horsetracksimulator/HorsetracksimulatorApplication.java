@@ -5,9 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.Scanner;
 
 @SpringBootApplication
 public class HorsetracksimulatorApplication implements CommandLineRunner {
+	@Autowired
+	private ConfigurableApplicationContext applicationContext;
+
 	@Autowired
 	KioskController kioskController;
 
@@ -19,6 +25,14 @@ public class HorsetracksimulatorApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		kioskController.loadData();
 		kioskController.initialPrint();
+		Scanner scanner = new Scanner(System.in);
+		while (!kioskController.quit()) {
+			kioskController.executeCommand(scanner.nextLine());
+		}
 
+
+		System.exit(SpringApplication.exit(applicationContext));
 	}
 }
+
+

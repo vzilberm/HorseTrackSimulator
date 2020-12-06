@@ -5,9 +5,12 @@ import com.zmints.horsetracksimulator.repository.KioskInventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class KioskInventoryService {
     private static final String INVENTORY_STRING = "Inventory:";
+    private static final int RESTOCK_AMOUNT = 10;
     @Autowired
     KioskInventoryRepository kioskInventoryRepository;
 
@@ -33,6 +36,15 @@ public class KioskInventoryService {
             System.out.println("$"+inventory.getDenomination()
                     +","+inventory.getBillCount());
         });
+    }
+
+    public void restock(){
+        List<KioskInventory> kioskInventoryList = kioskInventoryRepository.findAll();
+        kioskInventoryList.stream().forEach(inventory -> {
+            inventory.setBillCount(RESTOCK_AMOUNT);
+            kioskInventoryRepository.save(inventory);
+        });
+
     }
 
 
