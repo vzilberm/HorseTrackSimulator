@@ -52,4 +52,18 @@ public class RaceHorseService {
         newWinner.setStatus(HorseStatus.WON);
         raceHorseRepository.save(newWinner);
     }
+
+    public Horse getHorse(int horseNumber){
+        return raceHorseRepository.findByHorseNumberEquals(horseNumber);
+    }
+
+    public boolean isWinner(int horseNumber) {
+        return raceHorseRepository.findByHorseNumberEquals(horseNumber).getStatus() == HorseStatus.WON;
+    }
+
+    public int getOdds(int horseNumber) {
+        Horse horse = raceHorseRepository.findByHorseNumberEquals(horseNumber);
+
+        return horse.getOdds();
+    }
 }

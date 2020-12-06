@@ -1,10 +1,10 @@
 package com.zmints.horsetracksimulator.model;
 
-public class Wager {
+public class Bet {
     private final int denomination;
     private final int billCount;
 
-    public Wager(int denomination, int billCount) {
+    public Bet(int denomination, int billCount) {
         this.denomination = denomination;
         this.billCount = billCount;
     }
@@ -19,11 +19,10 @@ public class Wager {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Wager{");
-        sb.append("denomination=").append(denomination);
-        sb.append(", billCount=").append(billCount);
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder stringBuilder = new StringBuilder("Bet{");
+        stringBuilder.append("denomination=").append(denomination);
+        stringBuilder.append(", billCount=").append(billCount);
+        stringBuilder.append('}');
+        return stringBuilder.toString();
     }
-
 }

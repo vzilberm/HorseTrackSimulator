@@ -47,5 +47,31 @@ public class KioskInventoryService {
 
     }
 
+    public List<KioskInventory> getKioskInventory(){
+        return kioskInventoryRepository.findAll();
+    }
+
+    public KioskInventory  getInventoryByDenomination(int denomination) {
+        return kioskInventoryRepository.findByDenominationEquals(denomination);
+    }
+
+    public void decreaseInventory(int denomination, int amount) {
+
+        KioskInventory inventory = kioskInventoryRepository.findByDenominationEquals(denomination);
+
+        int billCount = inventory.getBillCount();
+        if ((billCount - amount) >= 0) {
+            inventory.setBillCount(billCount - amount);
+            kioskInventoryRepository.save(inventory);
+        }
+    }
+
+    public boolean isEnoughFunds(int amountWon) {
+
+        List<KioskInventory> inventories = kioskInventoryRepository.findAll();
+        Integer funds = inventories.stream().reduce(0,
+                (total, inventory) -> total + (inventory.getDenomination() * inventory.getBillCount()), Integer::sum);
+        return (funds - amountWon) >= 0;
+    }
 
 }
